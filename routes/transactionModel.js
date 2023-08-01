@@ -7,7 +7,6 @@ const stripe = require("stripe")(process.env.stripe_key);
 const { uuid } = require('uuidv4');
 
 // transer money from one account to another
-
 router.post("/transfer-funds", authMiddlewares, async (req, res) => {
   try {
     // save the transaction
