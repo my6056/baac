@@ -4,13 +4,12 @@ const app = express();
 const helmet = require("helmet");
 require("dotenv").config();
 const dbConfig = require("./config/dbConfig");
-const usersRoute = require("./routes/usersRoute");
 app.use(helmet());
 app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
 app.use(cors());
 app.use(express.json({ limit: 10000 }));
 
-app.use("/api/users", usersRoute);
+app.use("/", require("./routes"));
 const PORT = process.env.PORT || 4000;
 
 try {
