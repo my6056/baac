@@ -94,10 +94,22 @@ router.post(
 );
 
 // deposit funds using stripe
+// Define the minimum charge amount in USD and its equivalent in EUR
+const MIN_CHARGE_AMOUNT_USD = 0.50;
+const MIN_CHARGE_AMOUNT_EUR = 0.50; 
 
 router.post("/deposit-funds", authMiddlewares, async (req, res) => {
   try {
     const { token, amount } = req.body;
+     if (amount < MIN_CHARGE_AMOUNT_USD) {
+    // Respond with an error message asking the user to add more funds
+    return res.status(400).json({ error: '' });
+       return res.send({
+        message: "Amount must be at least $0.50 or its equivalent in EUR.",
+        data: null,
+        success: false,
+      });
+  }
     // create a customer
     const customer = await stripe.customers.create({
       email: token.email,
