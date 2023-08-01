@@ -20,7 +20,7 @@ const userSchema = new mongoose.Schema(
     },
     identificationType: {
       type: String,
-      required: true,
+      // required: true,
     },
     identificationNumber: {
       type: String,
