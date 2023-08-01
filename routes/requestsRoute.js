@@ -1,9 +1,8 @@
 const router = require("express").Router();
-const Request = require("../models/requestsModel");
+const Request = require("../models/requestModel");
 const authMiddlewares = require("../middlewares/authMiddlewares");
 const User = require("../models/usersModel");
 const Transaction = require("../models/transactionModel");
-const authMiddlewares = require("../middlewares/authMiddlewares");
 
 // get all requests for a user
 
@@ -92,6 +91,5 @@ router.post("/update-request-status", authMiddlewares, async (req, res) => {
     });
   }
 });
-
 
 module.exports = router;
