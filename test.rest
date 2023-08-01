@@ -1,0 +1,39 @@
+###
+POST http://localhost:4000/api/users/register
+Content-Type: application/json
+
+{
+    "firstName": "Mustopha",
+    "lastName": "Adewunmi",
+    "email": "abuhananade@gmail.com",
+    "phoneNumber": "08169683067",
+    "identificationType": "PASSPORT",
+    "identificationNumber": "1234567891",
+    "address": "Ikeja Ajah",
+    "password": "adeola_99"
+}
+
+###
+POST http://localhost:4000/api/users/login
+Content-Type: application/json
+
+{
+    "email": "abuhananade@gmail.com",
+    "password": "adeola_99"
+}
+
+###
+POST http://localhost:4000/api/users/update-user-verified-status
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOiI2NGIwNmY0ZjYwZTM3ZWE2OTgzZjgzYTMiLCJpYXQiOjE2ODkzNDYwOTQsImV4cCI6MTY4OTQzMjQ5NH0.juwG-a-WjMqBQBKxjbsZk5BkLyQTPtVCdr6go3DM7qc
+
+{
+    "isVerified": false
+}
+
+###
+GET http://localhost:4000/api/users/get-user-info
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOiI2NGIwNmY0ZjYwZTM3ZWE2OTgzZjgzYTMiLCJpYXQiOjE2ODkzNDYwOTQsImV4cCI6MTY4OTQzMjQ5NH0.juwG-a-WjMqBQBKxjbsZk5BkLyQTPtVCdr6go3DM7qc
+
+
