@@ -141,12 +141,13 @@ router.post("/deposit-funds", authMiddlewares, async (req, res) => {
       });
     } else {
       res.send({
-        message: "Transaction failed",
+        message: "Transaction failed ,not Success",
         data: charge,
         success: false,
       });
     }
   } catch (error) {
+    console.log("Transaction failed", error);
     res.send({
       message: "Transaction failed",
       data: error.message,
