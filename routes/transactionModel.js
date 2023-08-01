@@ -68,7 +68,7 @@ router.post("/verify-account", authMiddlewares, async (req, res) => {
 
 router.post(
   "/get-all-transactions-by-user",
-  authMiddleware,
+  authMiddlewares,
   async (req, res) => {
     try {
       const transactions = await Transaction.find({
@@ -94,7 +94,7 @@ router.post(
 
 // deposit funds using stripe
 
-router.post("/deposit-funds", authMiddleware, async (req, res) => {
+router.post("/deposit-funds", authMiddlewares, async (req, res) => {
   try {
     const { token, amount } = req.body;
     // create a customer
