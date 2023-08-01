@@ -24,13 +24,13 @@ router.post("/transfer-funds", authMiddlewares, async (req, res) => {
       $inc: { balance: req.body.amount },
     });
 
-    res.send({
+    return res.send({
       message: "Transaction successful",
       data: newTransaction,
       success: true,
     });
   } catch (error) {
-    res.send({
+    return res.send({
       message: "Transaction failed",
       data: error.message,
       success: false,
@@ -44,20 +44,20 @@ router.post("/verify-account", authMiddlewares, async (req, res) => {
   try {
     const user = await User.findOne({ _id: req.body.receiver });
     if (user) {
-      res.send({
+      return res.send({
         message: "Account verified",
         data: user,
         success: true,
       });
     } else {
-      res.send({
+      return res.send({
         message: "Account not found",
         data: null,
         success: false,
       });
     }
   } catch (error) {
-    res.send({
+    return res.send({
       message: "Account not found",
       data: error.message,
       success: false,
@@ -78,7 +78,7 @@ router.post(
         .sort({ createdAt: -1 })
         .populate("sender")
         .populate("receiver");
-      res.send({
+      return res.send({
         message: "Transactions fetched",
         data: transactions,
         success: true,
@@ -134,13 +134,13 @@ router.post("/deposit-funds", authMiddlewares, async (req, res) => {
       await User.findByIdAndUpdate(req.body.userId, {
         $inc: { balance: amount },
       });
-      res.send({
+      return res.send({
         message: "Transaction successful",
         data: newTransaction,
         success: true,
       });
     } else {
-      res.send({
+      return res.send({
         message: "Transaction failed ,not Success",
         data: charge,
         success: false,
@@ -148,7 +148,7 @@ router.post("/deposit-funds", authMiddlewares, async (req, res) => {
     }
   } catch (error) {
     console.log("Transaction failed", error);
-    res.send({
+    return res.send({
       message: "Transaction failed",
       data: error.message,
       success: false,
